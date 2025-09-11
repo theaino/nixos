@@ -9,19 +9,26 @@
       set number relativenumber
 
       set tabstop=2
-	  set softtabstop=0
-	  set shiftwidth=0
-	  set shiftround
-	  set expandtab
+	    set softtabstop=0
+	    set shiftwidth=0
+	    set shiftround
+	    set expandtab
 
       set autoindent
-	  filetype plugin indent on
+	    filetype plugin indent on
     '';
     plugins = let
       lua = code: ''lua << END
 ${code}
 END'';
     in [
+      {
+        plugin = pkgs.vimPlugins.gbprod-nord;
+        config = lua ''
+          require("nord").setup({})
+          vim.cmd.colorscheme("nord")
+        '';
+      }
       {
         plugin = pkgs.vimPlugins.mason-nvim;
         config = lua ''
