@@ -3,6 +3,7 @@
 {
   imports = [
     ../modules/home/st
+    ../modules/home/nvim
   ];
 
   home.username = "aino";
