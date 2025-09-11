@@ -18,6 +18,20 @@
     gh
   ];
 
+  programs.git = {
+    enable = true;
+    userName = "Aino Spring";
+    userEmail = "info@aino-spring.com";
+    extraConfig = {
+      "credential \"https://github.com\"" = {
+        helper = "!${pkgs.gh}/bin/gh auth git-credential";
+      };
+      "credential \"https://gist.github.com\"" = {
+        helper = "!${pkgs.gh}/bin/gh auth git-credential";
+      };
+    };
+  };
+
   programs.firefox = {
     enable = true;
 
