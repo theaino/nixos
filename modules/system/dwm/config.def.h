@@ -18,6 +18,12 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+  "xsetroot", "-solid", "#2e3440", NULL,
+  "bash", "-c", "while true; do xsetroot -name \"$(date +'%H:%M') | $(acpi -b | grep -oE \"[0-9]{1,3}%\")\"; sleep 30; done", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 

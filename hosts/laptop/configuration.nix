@@ -79,6 +79,10 @@
   #  wget
   ];
 
+  environment.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#laptop";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
