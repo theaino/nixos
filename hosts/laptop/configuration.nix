@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/system/xorg.nix
+      ../../modules/system/desktop.nix
       ../../modules/system/dwm
     ];
 
@@ -64,6 +64,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
+
+  fonts.packages = with pkgs; [
+    aporetic
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
