@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/system/nixld.nix
       ../../modules/system/desktop.nix
       ../../modules/system/dwm
     ];
@@ -67,6 +68,7 @@
 
   fonts.packages = with pkgs; [
     aporetic
+    nerd-fonts.victor-mono
   ];
 
   # Allow unfree packages
