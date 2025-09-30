@@ -3,6 +3,7 @@
 {
   services.xserver = {
     enable = true;
+    desktopManager.wallpaper.mode = "fill";
   };
 
   services.displayManager = {
@@ -10,6 +11,7 @@
     autoLogin.user = "aino";
   };
 
+  services.picom.enable = true;
 
   services.keyd = {
     enable = true;
@@ -19,7 +21,7 @@
         settings = {
           main = {
             capslock = "escape";
-  	  escape = "capslock";
+  	        escape = "capslock";
           };
           otherlayer = {};
         };

@@ -8,23 +8,14 @@
     ../modules/home/st
     ../modules/home/nvim
     ../modules/home/browser.nix
+    ../modules/home/tex.nix
+    ../modules/home/wallpaper
+    ../modules/home/monitors.nix
+    ../modules/home/theme.nix
   ];
 
   home.username = "aino";
   home.homeDirectory = "/home/aino";
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-  };
 
   xdg.portal = {
     enable = true;

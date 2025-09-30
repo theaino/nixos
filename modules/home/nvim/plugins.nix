@@ -23,14 +23,33 @@ with pkgs; [
     plugin = vimPlugins.mason-lspconfig-nvim;
     config = lua ''
       require("mason-lspconfig").setup({
-        ensure_installed = {}
+        ensure_installed = {
+          "clangd",
+          "gopls",
+          "rust_analyzer",
+          "texlab"
+        },
+        automatic_installation = true
       })
+      require("mason-lspconfig").setup_handlers({
+        function(server_name)
+          require("lspconfig")[server_name].setup({})
+        end,
+      })
+    '';
+  }
+
+  {
+    plugin = vimPlugins.vimtex;
+    config = lua ''
+      vim.g.vimtex_view_method = "zathura"
     '';
   }
 
   vimPlugins.cmp-nvim-lsp
   vimPlugins.cmp-path
   vimPlugins.cmp-cmdline
+  vimPlugins.cmp-vimtex
   vimPlugins.lspkind-nvim
   {
     plugin = vimPlugins.nvim-cmp;
@@ -63,7 +82,8 @@ with pkgs; [
           format = require("lspkind").cmp_format({})
         },
         sources = {
-          { name = "nvim_lsp" }
+          { name = "nvim_lsp" },
+          { name = "vimtex" }
         }
       })
     '';
@@ -77,6 +97,7 @@ with pkgs; [
   vimPlugins.nvim-treesitter-parsers.bash
   vimPlugins.nvim-treesitter-parsers.vim
   vimPlugins.nvim-treesitter-parsers.nix
+  vimPlugins.nvim-treesitter-parsers.latex
   {
     plugin = vimPlugins.nvim-treesitter;
     config = lua ''
@@ -101,7 +122,9 @@ with pkgs; [
   {
     plugin = vimPlugins.gbprod-nord;
     config = lua ''
-      require("nord").setup({})
+      require("nord").setup({
+        transparent = true,
+      })
       vim.cmd.colorscheme("nord")
     '';
   }

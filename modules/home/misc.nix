@@ -11,5 +11,9 @@
     libreoffice-still
     godot-mono
     gimp3-with-plugins
+    zathura
+    blender
+    legcord
+    sfxr
   ];
 }

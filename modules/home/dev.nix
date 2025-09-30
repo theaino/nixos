@@ -4,9 +4,17 @@
   home.packages = with pkgs; [
     gnumake
     git
+    glib
+    gsettings-desktop-schemas
     gh
     gcc15
     python3
+    go
+    cargo
+    rustc
+    usbutils
+    libusb1
+    arduino-ide
   ];
    
   programs.git = {
@@ -24,7 +32,10 @@
     };
   };
 
-  home.shellAliases = {
-    vig = "nvim --listen /tmp/godothost";
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      vig = "nvim --listen /tmp/godothost";
+    };
   };
 }
