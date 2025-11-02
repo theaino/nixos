@@ -9,8 +9,14 @@ with pkgs; [
         filetypes = {"gdscript"},
         settings = {}
       })
-
       vim.lsp.enable("godot")
+
+      vim.lsp.config("go-templ", {
+        cmd = {"go", "tool", "templ", "lsp"},
+        filetypes = {"templ"},
+        settings = {}
+      })
+      vim.lsp.enable("go-templ")
     '';
   }
   {
@@ -26,8 +32,10 @@ with pkgs; [
         ensure_installed = {
           "clangd",
           "gopls",
+          "pylsp",
           "rust_analyzer",
-          "texlab"
+          "texlab",
+          "openscad_lsp"
         },
         automatic_installation = true
       })
@@ -93,10 +101,12 @@ with pkgs; [
   vimPlugins.nvim-treesitter-parsers.go
   vimPlugins.nvim-treesitter-parsers.gomod
   vimPlugins.nvim-treesitter-parsers.gosum
+  vimPlugins.nvim-treesitter-parsers.templ
   vimPlugins.nvim-treesitter-parsers.python
   vimPlugins.nvim-treesitter-parsers.bash
   vimPlugins.nvim-treesitter-parsers.vim
   vimPlugins.nvim-treesitter-parsers.nix
+  vimPlugins.nvim-treesitter-parsers.rust
   vimPlugins.nvim-treesitter-parsers.latex
   {
     plugin = vimPlugins.nvim-treesitter;
@@ -118,6 +128,9 @@ with pkgs; [
       })
     '';
   }
+
+  vimPlugins.plenary-nvim
+  vimPlugins.telescope-nvim
 
   {
     plugin = vimPlugins.gbprod-nord;

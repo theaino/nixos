@@ -12,11 +12,14 @@
       ../../modules/system/desktop.nix
       ../../modules/system/dwm
       ../../modules/system/printing.nix
+      ../../modules/system/connectivity.nix
+      ../../modules/system/dev.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

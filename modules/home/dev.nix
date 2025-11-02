@@ -15,6 +15,8 @@
     usbutils
     libusb1
     arduino-ide
+    protobuf
+    sqlitebrowser
   ];
    
   programs.git = {
@@ -37,5 +39,8 @@
     shellAliases = {
       vig = "nvim --listen /tmp/godothost";
     };
+    bashrcExtra = ''
+      export PATH="$HOME/go/bin:$PATH"
+    '';
   };
 }
