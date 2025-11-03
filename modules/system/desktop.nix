@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  programs.dconf.enable = true;
+  services.dbus.enable = true;
+
   services.xserver = {
     enable = true;
     desktopManager.wallpaper.mode = "fill";

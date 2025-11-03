@@ -3,15 +3,14 @@
 {
   xdg = {
     enable = true;
-    autostart.enable = true;
-    portal = {
+    /*autostart.enable = true;*/
+    /*portal = {
       enable = true;
-      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-      config.common.default = [ "*" ];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = [ "gtk" ];
       xdgOpenUsePortal = true;
-    };
+    };*/
 
-    mime.enable = true;
     mimeApps = {
       enable = true;
       defaultApplications = {
