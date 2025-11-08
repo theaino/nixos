@@ -17,6 +17,7 @@
     arduino-ide
     protobuf
     sqlitebrowser
+    inetutils
   ];
    
   programs.git = {

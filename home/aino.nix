@@ -14,6 +14,7 @@
     ../modules/home/monitors.nix
     ../modules/home/theme.nix
     ../modules/home/msi.nix
+    ../modules/home/cloud.nix
   ];
 
   home.username = "aino";

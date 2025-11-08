@@ -64,7 +64,7 @@
   users.users.aino = {
     isNormalUser = true;
     description = "Aino Spring";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 

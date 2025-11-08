@@ -31,5 +31,6 @@ in [
     nextcloud-client
     signal-desktop
     inkscape
+    dino
   ];
 }
