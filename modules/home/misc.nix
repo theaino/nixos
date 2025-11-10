@@ -25,6 +25,7 @@ in [
     spotify
     freecad
     kicad
+    librecad
     openscad
     prismlauncher
     gamescope
@@ -32,5 +33,7 @@ in [
     signal-desktop
     inkscape
     dino
+    profanity
+    paperkey
   ];
 }

@@ -4,6 +4,8 @@
   programs.dconf.enable = true;
   services.dbus.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.xserver = {
     enable = true;
     desktopManager.wallpaper.mode = "fill";

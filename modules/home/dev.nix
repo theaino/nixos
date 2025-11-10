@@ -12,6 +12,9 @@
     go
     cargo
     rustc
+    zbar
+    qrencode
+    dmtx-utils
     usbutils
     libusb1
     arduino-ide
