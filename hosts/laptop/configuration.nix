@@ -50,6 +50,7 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.allowed-users = [ "aino" ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
