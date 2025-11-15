@@ -9,11 +9,12 @@
       '');
   GPUOffloadApp = pkg: desktopName: patchDesktop pkg desktopName "^Exec=" "Exec=nvidia-offload ";
 in [
+    libnotify
     pavucontrol
     steam
     (GPUOffloadApp steam "steam")
-    _1password-cli
-    _1password-gui
+    bitwarden-desktop
+    bitwarden-cli
     orca-slicer
     thunderbird
     libreoffice-still
@@ -30,10 +31,14 @@ in [
     prismlauncher
     gamescope
     nextcloud-client
-    signal-desktop
     inkscape
-    dino
-    profanity
     paperkey
+
+    signal-desktop
+    gajim
+    profanity
   ];
+
+  services.dunst.enable = true;
+  xdg.configFile."dunst/dunstrc".text = '''';
 }

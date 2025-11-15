@@ -15,6 +15,7 @@
     ../modules/home/theme.nix
     ../modules/home/msi.nix
     ../modules/home/cloud.nix
+    ../modules/home/mail.nix
   ];
 
   home.username = "aino";

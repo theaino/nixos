@@ -39,21 +39,21 @@
           installation_mode = "force_installed";
           updates_disabled  = true;
         };
-        "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
-	  install_url = moz "1password-x-password-manager";
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          install_url = moz "bitwarden-password-manager";
           installation_mode = "force_installed";
-	  updates_disabled = true;
-	  default_area = "navbar";
+          updates_disabled = true;
+          default_area = "navbar";
         };
-	"addon@darkreader.org" = {
-	  install_url = moz "darkreader";
-	  installation_mode = "force_installed";
-	  updates_disabled = true;
-	};
-	"jid1-MnnxcxisBPnSXQ@jetpack" = {
-	  install_url = moz "privacy-badger17";
+        "addon@darkreader.org" = {
+          install_url = moz "darkreader";
           installation_mode = "force_installed";
-	  updates_disabled = true;
+          updates_disabled = true;
+        };
+        "jid1-MnnxcxisBPnSXQ@jetpack" = {
+          install_url = moz "privacy-badger17";
+          installation_mode = "force_installed";
+          updates_disabled = true;
         };
         "3rdparty".Extensions = {
           "uBlock0@raymondhill.net".adminSettings = {
