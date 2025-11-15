@@ -7,6 +7,9 @@
     policies = {
       AppAutoUpdate                 = false;
       BackgroundAppUpdate           = false;
+
+      AutofillAddressEnabled        = false;
+      AutofillCreditCardEnabled     = false;
       
       DisableFirefoxStudies         = true;
       DisableFirefoxAccounts        = true;
@@ -20,7 +23,7 @@
       DisableTelemetry              = true;
       DisableFormHistory            = true;
       DisablePasswordReveal         = true;
-      
+
       BlockAboutConfig              = false;
       BlockAboutProfiles            = false;
       BlockAboutSupport             = true;
@@ -28,6 +31,24 @@
       DisplayMenuBar                = "never";
       DontCheckDefaultBrowser       = true;
       OfferToSaveLogins             = false;
+      TranslateEnabled              = false;
+
+      FirefoxHome = {
+        Search = true;
+        TopSites = true;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        Stories = false;
+        SponsoredPocket = false;
+        SponsoredStories = false;
+        Snippets = false;
+        Locked = false;
+      };
+
+      FirefoxSuggest = {
+        SponsoredSuggestions = false;
+      };
 
       ExtensionSettings = let
         moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
@@ -114,16 +135,28 @@
             ];
           }];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
+          definedAliases = [ "@p" ];
         };
         "Nix Options" = {
-          definedAliases = [ "@no" ];
+          definedAliases = [ "@o" ];
           urls = [{
             template = "https://search.nixos.org/options";
             params = [
               { name = "query"; value = "{searchTerms}"; }
             ];
           }];
+        };
+        "NixOS Wiki" = {
+          urls = [
+            {
+              template = "https://wiki.nixos.org/w/index.php";
+              params = [
+                { name = "search"; value = "{searchTerms}"; }
+              ];
+            }
+          ];
+          icon           = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@w" ];
         };
       };
     };

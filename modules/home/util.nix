@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, scheme, ... }:
 
 {
   home.packages = with pkgs; [
@@ -11,10 +11,12 @@
     autorandr
     picocom
     bluetuith
-    feh
-    zathura
     maim
     ripgrep
     xdg-utils
   ];
+
+  programs.alacritty.enable = true;
+  programs.zathura.enable = true;
+  programs.feh.enable = true;
 }

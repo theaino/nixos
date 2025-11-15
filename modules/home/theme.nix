@@ -1,36 +1,44 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
+
   home.packages = with pkgs; [
     gnome-themes-extra
   ];
-
-  gtk = {
+  
+  stylix = {
     enable = true;
-    theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
-    };
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-    gtk3 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-    };
-  };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
-  home.sessionVariables = {
-    GTK_THEME = "Arc-Dark";
-  };
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      monospace = {
+        name = "Victor Mono Nerd Font";
+        package = pkgs.nerd-fonts.victor-mono;
+      };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
 
-  #dconf.settings."org/gnome/desktop/interface" = {
-    #gtk-theme = lib.mkForce "Nordic";
-    #color-scheme = "prefer-dark";
-  #};
+    opacity.terminal = 0.95;
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
+    targets = {
+      firefox = {
+        firefoxGnomeTheme.enable = true;
+        profileNames = [ "default" ];
+      };
+    };
   };
 }

@@ -44,12 +44,6 @@ in [
     settings = {
       global = {
         follow = "mouse";
-        origin = "top-right";
-        font = "Victor Mono Nerd Font 10";
-        transparency = 10;
-      };
-      urgency_normal = {
-        background = "#434c5e";
       };
     };
   };

@@ -69,11 +69,6 @@
     packages = with pkgs; [];
   };
 
-  fonts.packages = with pkgs; [
-    aporetic
-    nerd-fonts.victor-mono
-  ];
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

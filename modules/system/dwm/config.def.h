@@ -106,7 +106,7 @@ static char dmenumon[2] = DMENUMON; /* component of dmenucmd, manipulated in spa
 #define DMENUCMD "dmenu -i -m '" DMENUMON "' -fn '" DMENUFONT "' -nb '" COL_GRAY1 "' -nf '" COL_GRAY3 "' -sb '" COL_CYAN "' -sf '" COL_GRAY4 "'"
 //static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[]   = { "j4-dmenu-desktop", "--dmenu", DMENUCMD, "--term", "st", NULL };
-static const char *termcmd[]    = { "st", NULL };
+static const char *termcmd[]    = { "alacritty", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 
 #define SCREENSHOTCMD "maim -s | xclip -t 'image/png' -selection clipboard"

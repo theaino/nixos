@@ -6,7 +6,6 @@
     ../modules/home/util.nix
     ../modules/home/misc.nix
     ../modules/home/xdg.nix
-    ../modules/home/st
     ../modules/home/nvim
     ../modules/home/browser.nix
     ../modules/home/tex.nix
