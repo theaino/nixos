@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -42,6 +42,7 @@
             home-manager.sharedModules = [
               inputs.nixcord.homeModules.nixcord
               inputs.stylix.homeModules.stylix
+              inputs.nixvim.homeModules.nixvim
             ];
 
             home-manager.extraSpecialArgs = {
@@ -49,7 +50,8 @@
             };
           }
 
-          stylix.nixosModules.stylix
+          inputs.stylix.nixosModules.stylix
+          inputs.nixvim.nixosModules.nixvim
         ];
       };
     };
