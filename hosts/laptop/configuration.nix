@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/system/nixld.nix
       ../../modules/system/desktop.nix
-      ../../modules/system/dwm
+      ../../modules/system/dwm.nix
       ../../modules/system/printing.nix
       ../../modules/system/connectivity.nix
       ../../modules/system/dev.nix

@@ -9,11 +9,10 @@
   services.xserver = {
     enable = true;
     desktopManager.wallpaper.mode = "fill";
+    displayManager.lightdm.enable = true;
   };
 
   services.displayManager = {
-    sddm.enable = true;
-    sddm.wayland.enable = true;
     autoLogin.enable = true;
     autoLogin.user = "aino";
   };
