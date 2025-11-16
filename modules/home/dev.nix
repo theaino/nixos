@@ -25,9 +25,11 @@
    
   programs.git = {
     enable = true;
-    userName = "Aino Spring";
-    userEmail = "info@aino-spring.com";
-    extraConfig = {
+    settings = {
+      user = {
+	name = "Aino Spring";
+	email = "info@aino-spring.com";
+      };
       credential.helper = "store";
       "credential \"https://github.com\"" = {
         helper = "!${pkgs.gh}/bin/gh auth git-credential";
