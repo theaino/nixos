@@ -9,9 +9,13 @@
     gnome-themes-extra
   ];
   
+  home.file.".background-image/wallpaper.png".source = ../../res/wallpaper.png;
+
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+
+    image = ../../res/wallpaper.png;
 
     fonts = {
       serif = {

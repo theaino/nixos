@@ -9,7 +9,6 @@
     ../modules/home/nvim
     ../modules/home/browser.nix
     ../modules/home/tex.nix
-    ../modules/home/wallpaper
     ../modules/home/monitors.nix
     ../modules/home/theme.nix
     ../modules/home/msi.nix

@@ -9,7 +9,16 @@
   services.xserver = {
     enable = true;
     desktopManager.wallpaper.mode = "fill";
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters.gtk = {
+        enable = true;
+        theme = {
+          name = "Adwaita-dark";
+          package = pkgs.gnome-themes-extra;
+        };
+      };
+    };
   };
 
   services.displayManager = {
