@@ -21,7 +21,6 @@ in [
     godot-mono
     gimp3-with-plugins
     blender
-    legcord
     sfxr
     spotify
     freecad
@@ -36,7 +35,6 @@ in [
 
     signal-desktop
     gajim
-    profanity
   ];
 
   services.dunst = {

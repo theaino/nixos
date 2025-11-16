@@ -14,6 +14,7 @@
     ../modules/home/msi.nix
     ../modules/home/cloud.nix
     ../modules/home/mail.nix
+    ../modules/home/nixcord.nix
   ];
 
   home.username = "aino";

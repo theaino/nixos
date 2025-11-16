@@ -13,6 +13,10 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
@@ -29,6 +33,11 @@
             home-manager.backupFileExtension = "bak";
 
             home-manager.users.aino = import ./home/aino.nix;
+
+            home-manager.sharedModules = [
+              inputs.nixcord.homeModules.nixcord
+              inputs.stylix.homeModules.stylix
+            ];
 
             home-manager.extraSpecialArgs = {
               inherit inputs;

@@ -1,10 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
-
   home.packages = with pkgs; [
     gnome-themes-extra
   ];
