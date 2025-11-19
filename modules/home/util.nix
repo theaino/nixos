@@ -16,7 +16,12 @@
     xdg-utils
   ];
 
-  programs.alacritty.enable = true;
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.size = lib.mkForce 10;
+    };
+  };
   programs.zathura.enable = true;
   programs.feh.enable = true;
 }
