@@ -14,14 +14,10 @@
     maim
     ripgrep
     xdg-utils
+		pandoc
   ];
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.size = lib.mkForce 10;
-    };
-  };
+  programs.alacritty.enable = true;
   programs.zathura.enable = true;
   programs.feh.enable = true;
 }

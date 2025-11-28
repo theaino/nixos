@@ -14,7 +14,10 @@
       scrolloff = 8;
       signcolumn = "yes";
 
+      tabstop = 2;
       shiftwidth = 2;
+
+      syntax = "on";
     };
     globals = {
       mapleader = " ";
@@ -61,6 +64,16 @@
           { name = "path"; }
           { name = "buffer"; }
         ];
+	settings = {
+	  mapping = {
+	    __raw = ''
+	      cmp.mapping.preset.insert({
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-y>'] = cmp.mapping.confirm({ select = tru }),
+	      })
+	    '';
+	  };
+	};
       };
       treesitter = {
         enable = true;

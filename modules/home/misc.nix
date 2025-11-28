@@ -32,7 +32,11 @@ in [
     nextcloud-client
     inkscape
     paperkey
+		monero-gui
+		xmrig
+		xmrig-cuda
 
+		teamspeak6-client
     signal-desktop
     gajim
   ];
@@ -45,4 +49,11 @@ in [
       };
     };
   };
+
+	home.file.".local/share/OpenSCAD/libraries/BOSL2".source = pkgs.fetchFromGitHub {
+		owner = "BelfrySCAD";
+		repo = "BOSL2";
+		rev = "266792b2a4bbf7514e73225dfadb92da95f2afe1";
+		sha256 = "sha256-MzUKQ50prQ8dc+MXXety76jT5/44Bx5Zxm5te/nrINE=";
+	};
 }
