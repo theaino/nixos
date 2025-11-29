@@ -2,4 +2,4 @@
 
 printf "'%s' " "$@"
 
-j4-dmenu-desktop --dmenu "$(printf "'%s' " "$@")" --term alacritty
+j4-dmenu-desktop --dmenu "$(printf "'%s' " "$@")" --term $TERMINAL

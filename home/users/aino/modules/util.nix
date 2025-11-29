@@ -20,4 +20,8 @@
   programs.alacritty.enable = true;
   programs.zathura.enable = true;
   programs.feh.enable = true;
+
+	home.sessionVariables = {
+		TERMINAL = "alacritty";
+	};
 }

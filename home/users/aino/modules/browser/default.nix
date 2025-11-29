@@ -25,5 +25,10 @@ in
 		(lib.mkIf (cfg.variant == "qutebrowser") {
 			programs.qutebrowser.enable = true;
 		})
+		{
+			home.sessionVariables = {
+				BROWSER = cfg.variant;
+			};
+		}
 	]);
 }
