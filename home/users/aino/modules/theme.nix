@@ -5,14 +5,14 @@
     gnome-themes-extra
   ];
   
-  home.file.".background-image/wallpaper.png".source = ../../res/wallpaper.png;
+  home.file.".background-image/wallpaper.png".source = ../res/wallpaper.png;
 
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
     polarity = "dark";
 
-    image = ../../res/wallpaper.png;
+    image = ../res/wallpaper.png;
 
     fonts = {
       serif = {
