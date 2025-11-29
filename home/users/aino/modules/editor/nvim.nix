@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
+let
+	cfg = config.nvim;
+in
 {
-  home.sessionVariables.EDITOR = "nvim";
-
   programs.nixvim = {
-    enable = true;
     viAlias = true;
     vimAlias = true;
 
@@ -92,6 +92,7 @@
           vim
         ];
       };
+			toggleterm.enable = true;
       web-devicons.enable = true;
       telescope.enable = true;
       vimtex.enable = true;
@@ -99,9 +100,11 @@
     keymaps = [
       { mode = "n"; key = "<leader>h"; action = "<cmd>noh<cr>"; }
 
+			# LSP
       { mode = "n"; key = "<leader>e"; action = "<cmd>lua vim.diagnostic.open_float()<cr>"; }
       { mode = "n"; key = "<leader>a"; action = "<cmd>lua vim.lsp.buf.code_action()<cr>"; }
 
+			# Copy to system clipboard
       { mode = "n"; key = "<leader>y"; action = "\"+y"; }
       { mode = "n"; key = "<leader>d"; action = "\"+d"; }
       { mode = "n"; key = "<leader>p"; action = "\"+p"; }
@@ -109,15 +112,25 @@
       { mode = "v"; key = "<leader>d"; action = "\"+d"; }
       { mode = "v"; key = "<leader>p"; action = "\"+p"; }
 
+			# Buffer navigation
       { mode = "n"; key = "<leader>n"; action = "<cmd>bn<cr>"; }
       { mode = "n"; key = "<leader>l"; action = "<cmd>bl<cr>"; }
       { mode = "n"; key = "<leader>c"; action = "<cmd>bd<cr>"; }
 
+			# Toggleterm
+			{ mode = "n"; key = "<c-t>"; action = "<cmd>exe v:count1 . \"ToggleTerm\"<cr>"; options.silent = true; }
+			{ mode = "i"; key = "<c-t>"; action = "<esc><cmd>exe v:count1 . \"ToggleTerm\"<cr>"; options.silent = true; }
+
+			# Telescope
       { mode = "n"; key = "<leader>f"; action = "<cmd>Telescope find_files<cr>"; }
       { mode = "n"; key = "<leader>/"; action = "<cmd>Telescope live_grep<cr>"; }
       { mode = "n"; key = "<leader>b"; action = "<cmd>Telescope buffers<cr>"; }
       { mode = "n"; key = "<leader>r"; action = "<cmd>lua require(\"telescope.builtin\").lsp_references()<cr>"; }
       { mode = "n"; key = "<leader>0"; action = "<cmd>lua require(\"telescope.builtin\").lsp_definitions()<cr>"; }
     ];
+		autoCmd = [
+			# ToggleTerm
+			{ event = [ "TermOpen" ]; pattern = [ "term://*" ]; command = "tnoremap <silent><c-t> <cmd>exe v:count1 . \"ToggleTerm\"<cr>"; }
+		];
   };
 }

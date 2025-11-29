@@ -16,7 +16,6 @@ in [
     bitwarden-desktop
     bitwarden-cli
     orca-slicer
-    thunderbird
     libreoffice-still
     godot-mono
     gimp3-with-plugins

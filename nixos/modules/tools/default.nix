@@ -4,14 +4,14 @@ let
 	cfg = config.tools;
 in
 {
-	options.tools = {
-		enable = lib.mkEnableOption "Enable tools";
-	};
-
 	imports = [
 		./dev.nix
 		./nix-ld.nix
 	];
+
+	options.tools = {
+		enable = lib.mkEnableOption "Enable tools";
+	};
 	
 	config = lib.mkMerge [
 		(lib.mkIf cfg.enable {

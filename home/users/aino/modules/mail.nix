@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+		thunderbird
+
     neomutt
     msmtp
     notmuch

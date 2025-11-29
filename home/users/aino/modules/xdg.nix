@@ -1,26 +1,22 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
 
 {
   xdg = {
     enable = true;
-    /*autostart.enable = true;*/
-    /*portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      config.common.default = [ "gtk" ];
-      xdgOpenUsePortal = true;
-    };*/
-
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "x-scheme-handler/about" = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-        "text/html" = [ "firefox.desktop" ];
-        "application/pdf" = [ "zathura.desktop" "firefox.desktop" ];
-      };
+      defaultApplications = lib.mkMerge [
+				(lib.mkIf config.browser.enable {
+					"x-scheme-handler/http" = [ "${config.browser.variant}.desktop" ];
+					"x-scheme-handler/https" = [ "${config.browser.variant}.desktop" ];
+					"x-scheme-handler/about" = [ "${config.browser.variant}.desktop" ];
+					"x-scheme-handler/unknown" = [ "${config.browser.variant}.desktop" ];
+					"text/html" = [ "${config.browser.variant}.desktop" ];
+				})
+				{
+					"application/pdf" = [ "zathura.desktop" ];
+				}
+			];
     };
 
     userDirs = {
