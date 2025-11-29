@@ -37,10 +37,10 @@
 		in
 		{
 			nixosConfigurations = {
-				laptop = nixpkgs.lib.nixosSystem {
+				mtop = nixpkgs.lib.nixosSystem {
 					inherit system pkgs;
 					modules = [
-						./nixos/hosts/laptop
+						./nixos/hosts/mtop
 						./nixos/modules
 
 						home-manager.nixosModules.home-manager {

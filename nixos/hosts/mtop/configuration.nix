@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "mtop";
 
   time.timeZone = "Europe/Berlin";
 
@@ -35,18 +35,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.allowed-users = [ "aino" ];
 
   users.users.aino = {
     isNormalUser = true;
     description = "Aino Spring";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
-  };
-
-  environment.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#laptop";
   };
 
 
