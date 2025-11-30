@@ -11,9 +11,10 @@ in
 				DEFAULT = "https://search.aino-spring.com/search?q={}";
 				nw = "https://wiki.nixos.org/w/index.php?search={}";
 				np = "https://search.nixos.org/packages?channel=unstable&query={}";
+				no = "https://search.nixos.org/options?channel=unstable&query={}";
 			};
 			settings = {
-				url.start_pages = ["https://search.aino-spring.com"];
+				url.start_pages = [ "https://search.aino-spring.com" ];
 
 				colors = {
 					webpage = {
