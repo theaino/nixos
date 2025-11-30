@@ -9,6 +9,12 @@
 		age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 	};
 
+	wallpaper = {
+		enable = true;
+		path = ./res/wallpaper.png;
+		theme = true;
+	};
+
 	mail = {
 		enable = true;
 		variant = "neomutt";

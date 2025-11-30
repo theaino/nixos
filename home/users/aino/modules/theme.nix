@@ -5,8 +5,6 @@
     gnome-themes-extra
   ];
 
-  home.file.".background-image/wallpaper.png".source = ../res/wallpaper.png;
-
   xresources.properties = with config.lib.stylix.colors.withHashtag; {
     "dwm.normbordercolor" = base00;
     "dwm.normbgcolor" = base00;
