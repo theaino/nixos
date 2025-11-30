@@ -16,13 +16,4 @@ in
 			description = "The editor variant to use";
 		};
 	};
-
-	config = lib.mkIf cfg.enable (lib.mkMerge [
-		(lib.mkIf (cfg.variant == "nvim") {
-			programs.nixvim = {
-				enable = true;
-				defaultEditor = true;
-			};
-		})
-	]);
 }

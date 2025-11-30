@@ -9,6 +9,11 @@
 		age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 	};
 
+	mail = {
+		enable = true;
+		variant = "neomutt";
+	};
+
 	browser = {
 		enable = true;
 		variant = "qutebrowser";
