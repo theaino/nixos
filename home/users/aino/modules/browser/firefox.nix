@@ -5,6 +5,11 @@ let
 in
 {
 	config = lib.mkIf (cfg.enable && cfg.variant == "firefox") {
+    stylix.targets.firefox = {
+			firefoxGnomeTheme.enable = true;
+			profileNames = [ "default" ];
+    };
+
 		programs.firefox = {
 			enable = true;
 			policies = {

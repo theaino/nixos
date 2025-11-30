@@ -4,44 +4,8 @@
   home.packages = with pkgs; [
     gnome-themes-extra
   ];
-  
+
   home.file.".background-image/wallpaper.png".source = ../res/wallpaper.png;
-
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-    polarity = "dark";
-
-    image = ../res/wallpaper.png;
-
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      monospace = {
-        name = "Victor Mono Nerd Font";
-        package = pkgs.nerd-fonts.victor-mono;
-      };
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
-
-    opacity.terminal = 0.95;
-
-    targets = {
-      firefox = {
-        firefoxGnomeTheme.enable = true;
-        profileNames = [ "default" ];
-      };
-    };
-  };
 
   xresources.properties = with config.lib.stylix.colors.withHashtag; {
     "dwm.normbordercolor" = base00;

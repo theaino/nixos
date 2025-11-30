@@ -59,7 +59,6 @@
 							home-manager.sharedModules = [
 								inputs.sops-nix.homeManagerModules.sops
 								inputs.nixcord.homeModules.nixcord
-								inputs.stylix.homeModules.stylix
 								inputs.nixvim.homeModules.nixvim
 							];
 
