@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+		sops-nix = {
+			url = "github:Mic92/sops-nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		chaotic = {
 			url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -52,6 +57,7 @@
 							home-manager.users.aino = import ./home/users/aino;
 
 							home-manager.sharedModules = [
+								inputs.sops-nix.homeManagerModules.sops
 								inputs.nixcord.homeModules.nixcord
 								inputs.stylix.homeModules.stylix
 								inputs.nixvim.homeModules.nixvim
@@ -62,6 +68,7 @@
 							};
 						}
 
+						inputs.sops-nix.nixosModules.sops
 						inputs.chaotic.nixosModules.default
 						inputs.stylix.nixosModules.stylix
 						inputs.nixvim.nixosModules.nixvim

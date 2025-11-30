@@ -1,48 +1,81 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
 		thunderbird
-
-    neomutt
-    msmtp
-    notmuch
   ];
-  xdg.configFile."neomutt/neomuttrc".text = ''
-    #------------------------------------------------------------
-    # Vi Key Bindings
-    #------------------------------------------------------------
 
-    # Moving around
-    bind attach,browser,index       g   noop
-    bind attach,browser,index       gg  first-entry
-    bind attach,browser,index       G   last-entry
-    bind pager                      g  noop
-    bind pager                      gg  top
-    bind pager                      G   bottom
-    bind pager                      k   previous-line
-    bind pager                      j   next-line
+	sops.secrets = {
+		"mail-pass".sopsFile = ../../../../secrets/mail.yaml;
+	};
 
-    # Scrolling
-    bind attach,browser,pager,index \CF next-page
-    bind attach,browser,pager,index \CB previous-page
-    bind attach,browser,pager,index \Cu half-up
-    bind attach,browser,pager,index \Cd half-down
-    bind browser,pager              \Ce next-line
-    bind browser,pager              \Cy previous-line
-    bind index                      \Ce next-line
-    bind index                      \Cy previous-line
+	# Inspiration: https://github.com/Baitinq/nixos-config/blob/c9851e910f6e0dc574527e2da4be29d704eda27d/modules/email/default.nix
+	accounts.email.maildirBasePath = "Mail";
+	accounts.email.accounts = {
+		"info@aino-spring.com" = {
+			primary = true;
+			realName = "Aino Spring";
+			address = "info@aino-spring.com";
+			userName = "info@aino-spring.com";
 
-    bind pager,index                d   noop
-    bind pager,index                dd  delete-message
+			imap = {
+				host = "imap.ionos.de";
+				port = 993;
+			};
 
-    # Threads
-    bind browser,pager,index        N   search-opposite
-    bind pager,index                dT  delete-thread
-    bind pager,index                dt  delete-subthread
-    bind pager,index                gt  next-thread
-    bind pager,index                gT  previous-thread
-    bind index                      za  collapse-thread
-    bind index                      zA  collapse-all # Missing :folddisable/foldenable
-  '';
+			smtp = {
+				host = "smtp.ionos.de";
+				port = 465;
+			};
+
+			imapnotify = {
+				enable = true;
+				boxes = [ "Inbox" ];
+				onNotifyPost = ''
+					${pkgs.libnotify}/bin/notify-send "New mail arrived"
+				'';
+			};
+			msmtp.enable = true;
+			mbsync = {
+				enable = true;
+				create = "both";
+			};
+
+			passwordCommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets.mail-pass.path}";
+
+			neomutt = {
+				enable = true;
+				mailboxName = "Inbox";
+			};
+		};
+	};
+
+	programs.mbsync.enable = true;
+	programs.msmtp.enable = true;
+	programs.neomutt = {
+		enable = true;
+		sidebar.enable = true;
+		vimKeys = true;
+		sort = "reverse-date";
+		extraConfig = ''
+			set mailcap_path = ${config.home.homeDirectory}/.config/neomutt/mailcap
+			auto_view text/html
+			set wait_key = no
+		'';
+		macros = [
+			{ map = [ "pager" ]; key = "\\cb"; action = "<pipe-message> ${pkgs.urlscan}/bin/urlscan<Enter>"; }
+			{ map = [ "pager" ]; key = "\\ce"; action = "<pipe-message> $EDITOR<Enter>"; }
+			{ map = [ "index" ]; key = "$"; action = "<shell-escape>mbsync --all<Enter>"; }
+		];
+	};
+
+	services.mbsync.enable = true;
+	services.imapnotify.enable = true;
+
+  xdg.configFile."neomutt/mailcap".text = ''
+text/html; ${pkgs.w3m}/bin/w3m -I %{charset} -T text/html; copiousoutput;
+image/*; ${pkgs.feh}/bin/feh '%s';
+application/pdf; ${pkgs.zathura}/bin/zathura '%s';
+application/x-pdf; ${pkgs.zathura}/bin/zathura '%s';
+	'';
 }

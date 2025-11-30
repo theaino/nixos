@@ -64,16 +64,16 @@ in
           { name = "path"; }
           { name = "buffer"; }
         ];
-	settings = {
-	  mapping = {
-	    __raw = ''
-	      cmp.mapping.preset.insert({
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-y>'] = cmp.mapping.confirm({ select = tru }),
-	      })
-	    '';
-	  };
-	};
+				settings = {
+					mapping = {
+						__raw = ''
+							cmp.mapping.preset.insert({
+					['<C-Space>'] = cmp.mapping.complete(),
+					['<C-y>'] = cmp.mapping.confirm({ select = tru }),
+							})
+						'';
+					};
+				};
       };
       treesitter = {
         enable = true;
@@ -118,6 +118,7 @@ in
       { mode = "n"; key = "<leader>c"; action = "<cmd>bd<cr>"; }
 
 			# Toggleterm
+			{ mode = "t"; key = "<c-e>"; action = "<c-\\><c-n>"; }
 			{ mode = "n"; key = "<c-t>"; action = "<cmd>exe v:count1 . \"ToggleTerm\"<cr>"; options.silent = true; }
 			{ mode = "i"; key = "<c-t>"; action = "<esc><cmd>exe v:count1 . \"ToggleTerm\"<cr>"; options.silent = true; }
 

@@ -15,9 +15,16 @@
     ripgrep
     xdg-utils
 		pandoc
+		libsixel
+
+		sops
+		age
   ];
 
-  programs.alacritty.enable = true;
+  programs.alacritty = {
+		enable = true;
+		package = pkgs.alacritty-graphics;
+	};
   programs.zathura.enable = true;
   programs.feh.enable = true;
 

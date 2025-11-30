@@ -1,0 +1,8 @@
+keys:
+  - &aino age1djhsf935um8dp9m4xse5rk2jz9407fc5gg2rlyf3pdggc6uj7ecq9leu2h
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *aino
+
