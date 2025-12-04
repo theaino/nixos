@@ -1,11 +1,11 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
 	cfg = config.browser;
 in
 {
 	imports = [
-		./qutebrowser.nix
+		./qutebrowser
 		./firefox.nix
 	];
 
@@ -20,6 +20,9 @@ in
 	
 	config = lib.mkIf cfg.enable (lib.mkMerge [
 		{
+			home.packages = with pkgs; [
+				surf
+			];
 			home.sessionVariables = {
 				BROWSER = cfg.variant;
 			};

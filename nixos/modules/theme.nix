@@ -4,8 +4,7 @@
   stylix = {
     enable = true;
 		autoEnable = true;
-    #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
     polarity = "dark";
 
     fonts = {

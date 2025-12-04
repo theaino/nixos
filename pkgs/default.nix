@@ -1,11 +1,16 @@
-{ system, ... }:
+{ system, inputs, ... }:
 
 {
 	inherit system;
 
-	config.allowUnfree = true;
+	config = {
+		allowUnfree = true;
+		permittedInsecurePackages = [
+			"libsoup-2.74.3"
+		];
+	};
 
-	overlays = [
-		(import ./dwm-flexipatch)
+	overlays = (import ./overlays) ++ [
+		inputs.nur.overlays.default
 	];
 }

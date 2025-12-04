@@ -22,7 +22,7 @@
 
 	browser = {
 		enable = true;
-		variant = "qutebrowser";
+		variant = "firefox";
 	};
 
 	editor = {

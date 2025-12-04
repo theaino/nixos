@@ -38,6 +38,12 @@ in
 							port = 993;
 						};
 
+						gpg = {
+							encryptByDefault = true;
+							signByDefault = true;
+							key = "7EA40D63698A041361DD3080A2F15C351B9CB710";
+						};
+
 						passwordCommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets.mail-pass.path}";
 					};
 				};

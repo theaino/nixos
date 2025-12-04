@@ -5,7 +5,7 @@ let
 in
 {
 	imports = [
-		./nvim.nix
+		../../../../../shared/modules/nvim.nix
 	];
 
 	options.editor = {
@@ -16,4 +16,10 @@ in
 			description = "The editor variant to use";
 		};
 	};
+
+	config = lib.mkIf cfg.enable (lib.mkMerge [
+		(lib.mkIf (cfg.variant == "nvim") {
+			programs.nixvim = config._shared.nixvim;
+		})
+	]);
 }

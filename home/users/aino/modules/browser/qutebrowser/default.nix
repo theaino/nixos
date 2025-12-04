@@ -1,10 +1,15 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
 	cfg = config.browser;
 in
 {
 	config = lib.mkIf (cfg.enable && cfg.variant == "qutebrowser") {
+		home.packages = with pkgs; [
+			keyutils
+			rofi
+		];
+
 		programs.qutebrowser = {
 			enable = true;
 			searchEngines = {
@@ -27,5 +32,13 @@ in
 				};
 			};
 		};
+		xdg.configFile."qutebrowser/userscripts/bitwarden".source = pkgs.runCommand "qutebrowser-bitwarden-userscript" {} ''
+			${pkgs.coreutils}/bin/cp ${./bitwarden.py} $out
+			${pkgs.gnused}/bin/sed -i "1i#!${pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+				tldextract
+				pyperclip
+			])}/bin/python3" $out
+			${pkgs.coreutils}/bin/chmod +x $out
+		'';
 	};
 }

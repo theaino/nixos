@@ -13,8 +13,6 @@ in [
     pavucontrol
     steam
     (GPUOffloadApp steam "steam")
-    bitwarden-desktop
-    bitwarden-cli
     orca-slicer
     libreoffice-still
     godot-mono
@@ -38,6 +36,7 @@ in [
 		teamspeak6-client
     signal-desktop
     gajim
+		poezio
   ];
 
   services.dunst = {

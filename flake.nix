@@ -9,15 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+		nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 		sops-nix = {
 			url = "github:Mic92/sops-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		chaotic = {
-			url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:nix-community/stylix";
@@ -35,13 +40,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-		let
-			system = "x86_64-linux";
-			pkgs = import nixpkgs (import ./pkgs { inherit system; });
-		in
-		{
-			nixosConfigurations = {
+  outputs = { self, nixpkgs, nix-on-droid, home-manager, ... }@inputs: {
+		nixosConfigurations =
+			let
+				system = "x86_64-linux";
+				pkgs = import nixpkgs (import ./pkgs { inherit system inputs; });
+			in
+			{
 				mtop = nixpkgs.lib.nixosSystem {
 					inherit system pkgs;
 					modules = [
@@ -68,11 +73,21 @@
 						}
 
 						inputs.sops-nix.nixosModules.sops
-						inputs.chaotic.nixosModules.default
 						inputs.stylix.nixosModules.stylix
 						inputs.nixvim.nixosModules.nixvim
 					];
 				};
 			};
-		};
+
+		nixOnDroidConfigurations.aiphone =
+			let
+				system = "aarch64-linux";
+				pkgs = import nixpkgs (import ./pkgs { inherit system inputs; });
+			in
+			nix-on-droid.lib.nixOnDroidConfiguration {
+				modules = [
+					./nixos/hosts/aiphone
+				];
+			};
+	};
 }
