@@ -1,6 +1,5 @@
 [
 	(import ./dwm-flexipatch)
-	(import ./surf)
 
 	(final: prev: {
 		poezio = prev.poezio.overrideAttrs (old: {

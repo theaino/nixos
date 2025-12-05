@@ -22,6 +22,7 @@ in
 					layout = "de";
 					variant = "";
 				};
+				wacom.enable = true;
 			};
 
 			services.displayManager.ly.enable = true;

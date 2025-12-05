@@ -24,6 +24,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+		zen-browser = {
+			url = "github:0xc000022070/zen-browser-flake";
+			inputs = {
+				nixpkgs.follows = "nixpkgs";
+				home-manager.follows = "home-manager";
+			};
+		};
+
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +66,7 @@
 
 							home-manager.sharedModules = [
 								inputs.sops-nix.homeManagerModules.sops
+								inputs.zen-browser.homeModules.beta
 								inputs.nixcord.homeModules.nixcord
 								inputs.nixvim.homeModules.nixvim
 							];

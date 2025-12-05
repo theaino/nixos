@@ -7,12 +7,13 @@ in
 	imports = [
 		./qutebrowser
 		./firefox.nix
+		./zen.nix
 	];
 
 	options.browser = {
 		enable = lib.mkEnableOption "Enable web browser";
 		variant = lib.mkOption {
-			type = lib.types.enum [ "firefox" "qutebrowser" ];
+			type = lib.types.enum [ "firefox" "qutebrowser" "zen" ];
 			default = "firefox";
 			description = "The browser variant to use";
 		};
@@ -20,9 +21,6 @@ in
 	
 	config = lib.mkIf cfg.enable (lib.mkMerge [
 		{
-			home.packages = with pkgs; [
-				surf
-			];
 			home.sessionVariables = {
 				BROWSER = cfg.variant;
 			};
