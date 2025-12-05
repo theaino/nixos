@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-		nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
-
 		sops-nix = {
 			url = "github:Mic92/sops-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-on-droid, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
 		nixosConfigurations =
 			let
 				system = "x86_64-linux";
@@ -77,17 +72,6 @@
 						inputs.nixvim.nixosModules.nixvim
 					];
 				};
-			};
-
-		nixOnDroidConfigurations.aiphone =
-			let
-				system = "aarch64-linux";
-				pkgs = import nixpkgs (import ./pkgs { inherit system inputs; });
-			in
-			nix-on-droid.lib.nixOnDroidConfiguration {
-				modules = [
-					./nixos/hosts/aiphone
-				];
 			};
 	};
 }
