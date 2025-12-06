@@ -22,7 +22,7 @@
 
 	browser = {
 		enable = true;
-		variant = "zen";
+		variant = "zen-beta";
 	};
 
 	editor = {

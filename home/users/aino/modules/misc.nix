@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   home.packages = with pkgs; let
@@ -19,7 +19,6 @@ in [
     gimp3-with-plugins
     blender
     sfxr
-    spotify
     freecad
     kicad
     librecad
@@ -54,4 +53,16 @@ in [
 		rev = "266792b2a4bbf7514e73225dfadb92da95f2afe1";
 		sha256 = "sha256-MzUKQ50prQ8dc+MXXety76jT5/44Bx5Zxm5te/nrINE=";
 	};
+
+	programs.spicetify =
+		let
+			spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+		in
+		{
+			enable = true;
+			enabledExtensions = with spicePkgs.extensions; [
+				keyboardShortcut
+				adblock
+			];
+		};
 }

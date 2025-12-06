@@ -4,8 +4,8 @@ let
 	cfg = config.browser;
 in
 {
-	config = lib.mkIf (cfg.variant == "zen") {
-		stylix.targets.zen-browser.profileNames = [ "aino" ];
+	config = lib.mkIf (cfg.variant == "zen-beta") {
+		stylix.targets.zen-browser.profileNames = [ "default" ];
 
 		programs.zen-browser = {
 			enable = true;
@@ -24,10 +24,12 @@ in
 				DontCheckDefaultBrowser = true;
 				NoDefaultBookmarks = true;
 				OfferToSaveLogins = false;
+				TranslateEnabled = false;
 			};
-			profiles.aino = {
+			profiles."default" = {
 				isDefault = true;
 				settings = {
+					"extensions.quarantinedDomains.enabled" = false;
 					"extensions.autoDisableScopes" = 0;
 					"zen.view.compact.enable-at-startup" = true;
         	"zen.view.compact.hide-toolbar" = true;

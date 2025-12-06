@@ -13,7 +13,7 @@ in
 	options.browser = {
 		enable = lib.mkEnableOption "Enable web browser";
 		variant = lib.mkOption {
-			type = lib.types.enum [ "firefox" "qutebrowser" "zen" ];
+			type = lib.types.enum [ "firefox" "qutebrowser" "zen-beta" ];
 			default = "firefox";
 			description = "The browser variant to use";
 		};

@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,10 +42,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+		spicetify-nix = {
+			url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+		};
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -66,9 +71,10 @@
 
 							home-manager.sharedModules = [
 								inputs.sops-nix.homeManagerModules.sops
+								inputs.nixvim.homeModules.nixvim
 								inputs.zen-browser.homeModules.beta
 								inputs.nixcord.homeModules.nixcord
-								inputs.nixvim.homeModules.nixvim
+								inputs.spicetify-nix.homeManagerModules.default
 							];
 
 							home-manager.extraSpecialArgs = {
