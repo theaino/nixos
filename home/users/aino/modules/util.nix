@@ -19,6 +19,8 @@
 
 		sops
 		age
+
+		st-flexipatch
   ];
 
   programs.alacritty = {

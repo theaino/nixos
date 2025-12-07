@@ -35,6 +35,8 @@ in [
 		teamspeak6-client
     signal-desktop
     gajim
+		sj
+		lchat
 		poezio
   ];
 

@@ -24,9 +24,9 @@ final: prev: {
     ];
 
     prePatch = ''
-      cp ${./patches.h} patches.h
-      cp ${./config.h} config.h
-      cp ${./config.mk} config.mk
+      ${prev.coreutils}/bin/cp ${./patches.h} patches.h
+      ${prev.coreutils}/bin/cp ${./config.h} config.h
+      ${prev.coreutils}/bin/cp ${./config.mk} config.mk
     '';
 
     makeFlags = [
@@ -35,8 +35,8 @@ final: prev: {
     ];
 
     postInstall = ''
-      mkdir -p $out/share/man/man1
-      cp dwm.1 $out/share/man/man1/
+      ${prev.coreutils}/bin/mkdir -p $out/share/man/man1
+      ${prev.coreutils}/bin/cp dwm.1 $out/share/man/man1/
     '';
 
     meta = with prev.lib; {

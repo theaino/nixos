@@ -1,5 +1,7 @@
 [
 	(import ./dwm-flexipatch)
+	(import ./st-flexipatch)
+	(import ./jabber)
 
 	(final: prev: {
 		poezio = prev.poezio.overrideAttrs (old: {
