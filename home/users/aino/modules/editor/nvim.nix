@@ -98,6 +98,7 @@ in
 				};
 				toggleterm.enable = true;
 				web-devicons.enable = true;
+				neo-tree.enable = true;
 				telescope.enable = true;
 				vimtex.enable = true;
 			};
@@ -132,6 +133,9 @@ in
 				{ mode = "n"; key = "<leader>b"; action = "<cmd>Telescope buffers<cr>"; }
 				{ mode = "n"; key = "<leader>r"; action = "<cmd>lua require(\"telescope.builtin\").lsp_references()<cr>"; }
 				{ mode = "n"; key = "<leader>0"; action = "<cmd>lua require(\"telescope.builtin\").lsp_definitions()<cr>"; }
+
+				# Tree
+				{ mode = "n"; key = "<leader>o"; action = "<cmd>Neotree toggle<cr>"; }
 			];
 			autoCmd = [
 				# ToggleTerm
