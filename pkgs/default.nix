@@ -12,5 +12,6 @@
 
 	overlays = (import ./overlays) ++ [
 		inputs.nur.overlays.default
+		inputs.templ.overlays.default
 	];
 }

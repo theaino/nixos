@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+		templ = {
+			url = "github:a-h/templ";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		zen-browser = {
 			url = "github:0xc000022070/zen-browser-flake";
 			inputs = {

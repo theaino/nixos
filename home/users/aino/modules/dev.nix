@@ -21,6 +21,8 @@
     protobuf
     sqlitebrowser
     inetutils
+		imagemagick
+		perl
   ];
    
   programs.git = {

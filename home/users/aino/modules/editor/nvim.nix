@@ -52,7 +52,7 @@ in
 						vim.lsp.enable("godot")
 
 						vim.lsp.config("go-templ", {
-							cmd = {"go", "tool", "templ", "lsp"},
+							cmd = {"${pkgs.templ}/bin/templ", "lsp"},
 							filetypes = {"templ"},
 							settings = {}
 						})
@@ -80,6 +80,7 @@ in
 				};
 				treesitter = {
 					enable = true;
+					settings.highlight.enable = true;
 					grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
 						bash
 						c

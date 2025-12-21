@@ -31,6 +31,8 @@ in [
 		monero-gui
 		xmrig
 		xmrig-cuda
+		wineWowPackages.stable
+		winetricks
 
 		teamspeak6-client
     signal-desktop

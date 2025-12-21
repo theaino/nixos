@@ -11,7 +11,6 @@ in
 			enable = true;
 			nativeMessagingHosts = with pkgs; [
 				firefoxpwa
-				tridactyl-native
 			];
 			policies = {
 				AutofillAddressEnabled = false;
@@ -37,7 +36,6 @@ in
 				};
 				extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
 					ublock-origin
-					tridactyl
 					darkreader
 					privacy-badger
 					bitwarden

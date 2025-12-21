@@ -53,7 +53,12 @@ in
 		};
 	};
 
-	config = lib.mkIf cfg.enable {
-		home.file.".background-image/wallpaper.png".source = "${themeWallpaper}/img.png";
-	};
+	config = lib.mkIf cfg.enable (lib.mkMerge [
+		(lib.mkIf cfg.theme {
+			home.file.".background-image/wallpaper.png".source = "${themeWallpaper}/img.png";
+		})
+		(lib.mkIf (!cfg.theme) {
+			home.file.".background-image/wallpaper.png".source = cfg.path;
+		})
+	]);
 }

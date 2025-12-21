@@ -12,7 +12,7 @@
 	wallpaper = {
 		enable = true;
 		path = ./res/wallpaper.png;
-		theme = true;
+		theme = false;
 	};
 
 	mail = {
